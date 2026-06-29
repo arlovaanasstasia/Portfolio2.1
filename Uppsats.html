@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anastasia Arlova</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="hero" id="home">
+      <div class="hero-inner">
+        <nav class="nav">
+          <a href="index.html" class="logo">ARYA</a>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#albums">Albums</a></li>
+            <li><a href="Uppsats.html">Essay</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="essay-page">
+      <section class="essay">
+        <h1>Processanalys – Webbplats (HTML och CSS)</h1>
+
+        <h2>Inledning</h2>
+        <p>
+          Syftet med denna processanalys är att beskriva och reflektera över hur
+          jag arbetade med kodningen av webbplatsen, med fokus på HTML och CSS.
+          Analysen utgår från min faktiska arbetsprocess, vilka problem som
+          uppstod under arbetets gång och hur dessa löstes. Fokus ligger på
+          tekniska val, responsivitet och kodstruktur snarare än grafisk design.
+          Under arbetet kommenterade jag koden för att tydliggöra syftet med
+          viktiga delar (både i HTML och CSS) och för att göra strukturen
+          lättare att underhålla. Jag arbetade också med indentering och
+          konsekventa klassnamn för att hålla koden överskådlig. Webbplatsen är
+          uppbyggd som en portfolio med en landningssida (index.html) och flera
+          undersidor. Startsidan fungerar både som en introduktion och som en
+          samlingspunkt för navigation vidare till resterande innehåll.
+        </p>
+
+        <h2>HTML – struktur och semantik</h2>
+        <p>
+          När jag påbörjade arbetet med webbplatsen valde jag att arbeta enligt
+          HTML5-standard och använda semantiska element för att skapa en tydlig
+          och hållbar struktur. För att säkerställa att koden följde standarden
+          validerade jag sidorna i en HTML-validator och rättade eventuella
+          felmeddelanden. Det gjorde det lättare att hitta små syntaxfel tidigt,
+          innan de skapade större layoutproblem. Dokumentet byggdes upp med html
+          doctype, språkattribut (lang="sv") samt en tydlig uppdelning mellan
+          <code>&lt;head&gt;</code> och <code>&lt;body&gt;</code>. I
+          <code>&lt;head&gt;</code> inkluderade jag endast nödvändiga delar,
+          såsom teckenkodning, viewport-inställningar och länkning till extern
+          CSS-fil. Detta gjorde att innehållet kunde hållas separat från
+          presentationen, vilket underlättade både felsökning och vidare
+          utveckling. Tidigt i processen delade jag in sidan i större semantiska
+          block med hjälp av <code>&lt;header&gt;</code>,
+          <code>&lt;section&gt;</code> och <code>&lt;footer&gt;</code>. Syftet
+          var att skapa en tydlig hierarki i dokumentet och göra koden mer
+          lättläst och lättförståelig. Navigationsmenyn placerades i ett
+          <code>&lt;nav&gt;</code>-element inom <code>&lt;header&gt;</code>,
+          vilket gjorde det enkelt att identifiera menyn både i koden och vid
+          responsiva justeringar. Startsidan byggdes upp av flera sektioner som
+          nås via ankarlänkar, exempelvis about och albums. Detta gör det enkelt
+          för användaren att navigera mellan olika delar av sidan utan att
+          behöva leta. Under arbetets gång blev det tydligt hur viktigt det är
+          att HTML-strukturen är konsekvent. Ett till synes litet fel, såsom en
+          felstavad bokstav, kan plötsligt leda till flera timmars felsökning.
+          HTML bygger på taggar som tolkas av webbläsaren för att skapa sidans
+          struktur. Om en tagg skrivs fel eller inte avslutas korrekt kan detta
+          påverka hur resten av dokumentet tolkas, vilket ofta leder till
+          oväntade fel i layouten (MDN Web Docs, u.å.).
+        </p>
+
+        <h2>HTML som problemlösning</h2>
+        <p>
+          Ett tydligt exempel på hur HTML-strukturen påverkade resten av arbetet
+          var utvecklingen av footern. Footern består av tre huvudsakliga delar:
+          adress, about me och kontakt. Till en början uppstod problem där dessa
+          delar hamnade i olika höjd och betedde sig olika beroende på
+          skärmstorlek. Jag försökte först lösa detta med CSS, men när problemen
+          kvarstod insåg jag att orsaken låg i HTML-strukturen. Alla element låg
+          inte inom samma överordnade container, vilket gjorde att CSS-regler
+          inte applicerades jämnt. För att lösa detta justerade jag HTML-koden
+          så att alla kolumner placerades inom samma wrapper (footer-inner) och
+          fick samma grundstruktur (footer-col). När detta var på plats kunde
+          layoutproblemen lösas på ett mer stabilt sätt med CSS. Samma typ av
+          insikt uppstod även i andra delar av sidan. När ändringar ibland inte
+          “tog”, trots att CSS-koden justerades, visade det sig ofta bero på att
+          HTML-strukturen inte var tillräckligt tydlig. Processen blev därför
+          iterativ: justera struktur, testa igen och först därefter arbeta
+          vidare med layout.
+        </p>
+
+        <h2>CSS – skalbara lösningar</h2>
+        <p>
+          När HTML-strukturen var färdig flyttades fokus till CSS och responsiv
+          design. Ett tidigt beslut var att använda en enkel reset och sätta
+          box-sizing: border-box globalt. Detta gav bättre kontroll över hur
+          bredd och höjd beräknas och minskade risken för oväntade
+          layoutproblem. Under arbetets gång uppstod flera responsiva problem.
+          Exempelvis blev viss text väldigt liten på stora skärmar, samtidigt
+          som den kunde flyta över bakgrundsbilder på mindre skärmar. För att
+          lösa detta valde jag att arbeta konsekvent med clamp() för typografi,
+          spacing och positionering. Genom att ange ett min-, ett ideal- och ett
+          maxvärde kunde jag skapa lösningar som anpassade sig efter
+          skärmstorlek utan att bli extrema. Genom att låta HTML hantera
+          struktur och innehåll, och CSS styra layout och utseende, blev det
+          möjligt att justera designen utan att påverka sidans uppbyggnad. Detta
+          underlättade särskilt arbetet med responsiv anpassning, där samma
+          struktur kunde fungera över flera skärmstorlekar med hjälp av
+          CSS-regler (Faraon & Holmberg, 2022).
+        </p>
+
+        <h2>Navigation och layout</h2>
+        <p>
+          Navigationsmenyn byggdes med flexbox för att enkelt kunna justeras
+          horisontellt. Eftersom menyn är placerad absolut ovanpå hero-bilden
+          krävdes extra noggrannhet kring positionering och skalning. På mindre
+          skärmar tilläts länkarna att brytas med flex-wrap, vilket gjorde att
+          menyn kunde anpassa sig efter tillgängligt utrymme utan att staplas på
+          ett okontrollerat sätt. Albumsektionen är ett annat exempel på
+          responsiv layout. Här används CSS Grid för att skapa en tredelad
+          layout på större skärmar, som sedan övergår till en enkel kolumn på
+          mobil. Detta gjorde sidan mer lättanvänd och minskade risken för att
+          innehållet blev för kompakt. Utformningen av navigation och layout
+          utgick även från hur användare tar till sig innehåll på webben. Enligt
+          Krug skannar användare ofta sidor snabbt istället för att läsa dem i
+          detalj, vilket ställer krav på tydlig struktur och överblickbarhet.
+          Genom att använda flexbox och grid skapades en layout där innehållet
+          snabbt kan identifieras utan att kräva aktivt tänkande från användaren
+          (Krug, 2014). För att säkerställa konsekvent och webbsäker typografi
+          använde jag typsnittet Inter från Google Fonts, som laddades in via
+          HTML och applicerades globalt med CSS.
+        </p>
+
+        <h2>Certificates och footer</h2>
+        <p>
+          Footern var den mest komplexa delen av CSS-arbetet. Här behövde jag
+          lösa flera problem samtidigt: kolumner som inte skulle staplas fel,
+          titlar som skulle ligga på samma höjd samt text som behövde placeras
+          längre ner på bakgrundsbilden utan att flyta över. För att lösa detta
+          byggdes footern som en grid-container med tre kolumner definierade med
+          minmax(). Detta gjorde att kolumnerna kunde skala utan att kollapsa
+          för tidigt. Inom varje kolumn användes en intern grid-struktur där
+          rubrikraden fick en fast höjd, vilket gjorde att alla titlar hamnade i
+          samma vertikala position. För att justera placeringen av innehållet i
+          footern löstes detta på container-nivå med align-content: end samt
+          kontrollerad padding med clamp(). Detta visade sig vara mer stabilt än
+          att justera enskilda element med marginaler.
+        </p>
+
+        <h2>CSS-animation</h2>
+        <p>
+          I certifikatsektionen använde jag en enkel CSS-animation för att skapa
+          en skakande effekt när användaren hovrar över den klickbara bilden.
+          Syftet var att dra uppmärksamhet till elementet och tydliggöra att det
+          är interaktivt, utan att använda JavaScript. Animationen skapades med
+          hjälp av keyframes, där jag steg för steg definierade hur elementet
+          skulle röra sig. Genom att justera transform-egenskapen vid olika
+          tidpunkter får bilden en lätt skakande rörelse i sidled. Animationen
+          aktiveras vid hover och upprepas så länge användaren håller muspekaren
+          över elementet. Processen liknar på många sätt animationsprocessen i
+          Maya och Blender, där rörelser byggs upp stegvis över tid. Jag valde
+          CSS-animation istället för JavaScript eftersom det är enklare, kräver
+          mindre kod och har mindre påverkan på prestanda, samt för att jag
+          aldrig i mitt liv använt den tidigare. För att ta hänsyn till
+          tillgänglighet använde jag även media queryn prefers-reduced-motion.
+          Det innebär att animationen automatiskt stängs av för användare som
+          har valt att minska rörelser i sitt operativsystem, vilket gör
+          webbplatsen mer användarvänlig. Enligt MDN Web Docs används keyframes
+          för att beskriva hur ett element förändras under en animation, medan
+          animation-egenskapen styr hur och när animationen spelas upp (MDN Web
+          Docs, u.å.).
+        </p>
+
+        <h2>Sammanfattning</h2>
+        <p>
+          Sammanfattningsvis visade arbetet med webbplatsen hur tätt
+          sammanlänkade HTML-struktur och CSS-layout är. Många av de problem som
+          uppstod gick inte att lösa effektivt utan att först se över den
+          underliggande strukturen, vilket gjorde arbetsprocessen tydligt
+          iterativ. Genom att justera HTML-strukturen, testa lösningar och
+          därefter arbeta vidare med CSS fick jag en bättre förståelse för hur
+          små strukturella val kan få stor påverkan på layout och responsivitet.
+          Arbetet gav mig en tydligare bild av vikten av att bygga ett
+          genomtänkt system snarare än att förlita sig på tillfälliga
+          justeringar, särskilt när det gäller responsiv design. I vissa delar,
+          såsom footern, valde jag medvetet att hålla innehållet statiskt och
+          icke-interaktivt. Fokus låg på struktur, placering och visuell
+          konsekvens snarare än funktionell interaktion, och därför
+          prioriterades en lösning som var stabil och tydlig över olika
+          skärmstorlekar. Samtidigt ser jag tydliga möjligheter till
+          vidareutveckling, exempelvis att låta footerns rubriker fungera som
+          klickbara element som visar eller döljer kort med tillhörande
+          brödtext. En sådan lösning hade kunnat skapa en mer dynamisk
+          användarupplevelse, men det är också viktigt att arbetet präglades av
+          wabi-sabi-tänk, där funktion och helhet prioriterades framför
+          perfektion. Överlag har processen gett mig en djupare förståelse för
+          hur viktigt det är att arbeta strukturerat, testa lösningar stegvis
+          och göra medvetna avgränsningar.
+        </p>
+
+        <h2>Referenser</h2>
+        <ul class="essay-references">
+          <li>
+            Faraon, M., &amp; Holmberg, L. (2022).
+            <em>Introduktion till HTML och CSS</em>. Studentlitteratur.
+          </li>
+          <li>
+            Krug, S. (2014).
+            <em
+              >Don’t Make Me Think, Revisited: A Common Sense Approach to Web
+              Usability</em
+            >
+            (3rd ed.). New Riders.
+          </li>
+          <li>
+            MDN Web Docs. (u.å.). <em>HTML: HyperText Markup Language</em>.
+            https://developer.mozilla.org/en-US/docs/Web/HTML
+          </li>
+          <li>
+            MDN Web Docs. (u.å.). <em>Using CSS animations</em>.
+            https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Animations/Using
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="contact">
+      <div class="footer-inner">
+        <!-- adress -->
+        <div class="footer-col">
+          <a class="footer-title-link" href="adress.html">ADRESS</a>
+
+          <div class="footer-content">
+            <p class="footer-text">
+              Vasluggatan 10 Stockholm<br />
+              telefon: 073-6569556
+            </p>
+          </div>
+        </div>
+        <!-- about me -->
+        <div class="footer-col">
+          <a class="footer-title-link" href="about.html">ABOUT ME</a>
+
+          <div class="footer-content">
+            <p class="footer-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Pellentesque sit amet sapien fringilla.
+            </p>
+          </div>
+        </div>
+        <!-- contact -->
+        <div class="footer-col">
+          <a class="footer-title-link" href="contact.html">CONTACT</a>
+
+          <div class="footer-socials">
+            <a class="social" href="#" aria-label="Instagram">in</a>
+            <a class="social" href="#" aria-label="LinkedIn">li</a>
+            <a class="social" href="#" aria-label="TikTok">tt</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
